@@ -4,7 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.common.*;
 import co.com.sofka.training.ddd.customer.entity.CustomerBonus;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.values.*;
+import co.com.sofka.training.ddd.customer.value.*;
 
 import java.util.Set;
 

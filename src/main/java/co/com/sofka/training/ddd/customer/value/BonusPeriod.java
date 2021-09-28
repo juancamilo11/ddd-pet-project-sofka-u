@@ -1,4 +1,4 @@
-package co.com.sofka.training.ddd.customer.values;
+package co.com.sofka.training.ddd.customer.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 

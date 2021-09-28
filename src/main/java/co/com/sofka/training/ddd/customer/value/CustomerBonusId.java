@@ -1,10 +1,10 @@
-package co.com.sofka.training.ddd.customer.values;
+package co.com.sofka.training.ddd.customer.value;
 
 import co.com.sofka.domain.generic.Identity;
 
 public class CustomerBonusId extends Identity {
 
-    public CustomerBonusId(String id){
+    private CustomerBonusId(String id){
         super(id);
     }
 
