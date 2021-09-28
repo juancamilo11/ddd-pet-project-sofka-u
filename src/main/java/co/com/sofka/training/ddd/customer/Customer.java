@@ -77,7 +77,5 @@ public class Customer extends AggregateEvent<CustomerId> {
                 .findFirst();
     }
 
-    
-
 
 }

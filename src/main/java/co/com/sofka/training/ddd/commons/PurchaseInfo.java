@@ -3,6 +3,7 @@ package co.com.sofka.training.ddd.commons;
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class PurchaseInfo implements ValueObject<String> {
 
@@ -10,8 +11,8 @@ public class PurchaseInfo implements ValueObject<String> {
     private LocalDate purchaseDate;
 
     public PurchaseInfo(String location, LocalDate purchaseDate) {
-        this.location = location;
-        this.purchaseDate = purchaseDate;
+        this.location = Objects.requireNonNull(location);
+        this.purchaseDate = Objects.requireNonNull(purchaseDate);
     }
 
     @Override

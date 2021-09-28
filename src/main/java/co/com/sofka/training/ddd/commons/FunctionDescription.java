@@ -2,16 +2,18 @@ package co.com.sofka.training.ddd.commons;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class FunctionDescription implements ValueObject<String> {
-    private String FunctDescription;
+import java.util.Objects;
 
-    public FunctionDescription(String FunctDescription) {
-        this.FunctDescription = FunctDescription;
+public class FunctionDescription implements ValueObject<String> {
+    private String functDescription;
+
+    public FunctionDescription(String functDescription) {
+        this.functDescription = Objects.requireNonNull(functDescription);
     }
 
     @Override
     public String value() {
-        return this.FunctDescription;
+        return this.functDescription;
     }
 
 }
