@@ -18,8 +18,12 @@ public class Employee extends AggregateEvent<EmployeeId> {
     private EmploymentContract employmentContract;
     private Set<EmployeeFunction> employeeFunctionSet;
 
-    public Employee(EmployeeId employeeId) {
+    public Employee(EmployeeId employeeId, FullName fullName, PhoneNumber phoneNumber,
+                    Address address, Email email) {
         super(employeeId);
-
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.email = email;
     }
 }

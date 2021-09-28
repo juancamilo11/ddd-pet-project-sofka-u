@@ -1,9 +1,9 @@
 package co.com.sofka.training.ddd.customer.entity;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.training.ddd.customer.value.FunctionCharacteristic;
+import co.com.sofka.training.ddd.commons.FunctionCharacteristic;
 import co.com.sofka.training.ddd.customer.value.CustomerFunctionId;
-import co.com.sofka.training.ddd.customer.value.FunctionDescription;
+import co.com.sofka.training.ddd.commons.FunctionDescription;
 
 public class CustomerFunction extends Entity<CustomerFunctionId> {
 

@@ -4,14 +4,14 @@ import co.com.sofka.domain.generic.ValueObject;
 
 public class Email implements ValueObject<String> {
 
-    private final String value;
+    private final String email;
 
     public Email(String value){
-        this.value = value;
+        this.email = value;
     }
 
     @Override
     public String value() {
-        return this.value;
+        return this.email;
     }
 }
