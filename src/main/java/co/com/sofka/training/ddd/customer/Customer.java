@@ -20,7 +20,7 @@ public class Customer extends AggregateEvent<CustomerId> {
     protected MoneyQuantity moneyQuantity;
 
     protected CustomerBonus customerBonus;
-    protected Set<CustomerFunction> employeeFunctionSet;
+    protected Set<CustomerFunction> customerFunctionSet;
 
     public Customer(CustomerId customerId, FullName fullName, PhoneNumber phoneNumber,
                     Address address, Email email, MoneyQuantity moneyQuantity) {
@@ -70,8 +70,8 @@ public class Customer extends AggregateEvent<CustomerId> {
         appendChange(new CustomerMoneyQuantityUpdated(moneyQuantity)).apply();
     }
 
-    public Optional<CustomerFunction> getFunctionById(CustomerFunctionId customerFunctionId){
-        return this.employeeFunctionSet
+    public Optional<CustomerFunction> getCustomerFunctionById(CustomerFunctionId customerFunctionId){
+        return this.customerFunctionSet
                 .stream()
                 .filter(function -> function.identity().equals(customerFunctionId))
                 .findFirst();

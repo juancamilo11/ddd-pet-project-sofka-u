@@ -2,18 +2,16 @@ package co.com.sofka.training.ddd.eployee;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.commons.*;
-import co.com.sofka.training.ddd.customer.events.CustomerBonusAdded;
-import co.com.sofka.training.ddd.customer.events.CustomerCreated;
-import co.com.sofka.training.ddd.customer.events.CustomerFunctionAdded;
-import co.com.sofka.training.ddd.customer.value.*;
+import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
+import co.com.sofka.training.ddd.customer.events.CustomerFunctionCharacteristicUpdated;
+import co.com.sofka.training.ddd.customer.events.CustomerFunctionDescriptionUpdated;
 import co.com.sofka.training.ddd.eployee.entity.EmployeeFunction;
 import co.com.sofka.training.ddd.eployee.entity.EmploymentContract;
-import co.com.sofka.training.ddd.eployee.events.EmployeeCreated;
-import co.com.sofka.training.ddd.eployee.events.EmployeeFunctionAdded;
-import co.com.sofka.training.ddd.eployee.events.EmploymentContractAdded;
+import co.com.sofka.training.ddd.eployee.events.*;
 import co.com.sofka.training.ddd.eployee.value.*;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Employee extends AggregateEvent<EmployeeId> {
@@ -53,12 +51,41 @@ public class Employee extends AggregateEvent<EmployeeId> {
         appendChange(new EmploymentContractAdded(employmentContractId, salary,jobPosition, workingTime, contractTerm)).apply();
     }
 
+    public Optional<EmployeeFunction> getEmployeeFunctionById(EmployeeFunctionId employeeFunctionId){
+        return this.employeeFunctionSet
+                .stream()
+                .filter(function -> function.identity().equals(employeeFunctionId))
+                .findFirst();
+    }
 
+    public void changeFullName(FullName fullName){
+        Objects.requireNonNull(fullName);
+        appendChange(new EmployeeFullNameUpdated(fullName)).apply();
+    }
 
+    public void changePhoneNumber(PhoneNumber phoneNumber){
+        Objects.requireNonNull(phoneNumber);
+        appendChange(new EmployeePhoneNumberUpdated(phoneNumber)).apply();
+    }
 
+    public void changeAddress(Address address){
+        Objects.requireNonNull(address);
+        appendChange(new EmployeeAddressUpdated(address)).apply();
+    }
 
+    public void changeEmail(Email email){
+        Objects.requireNonNull(email);
+        appendChange(new EmployeeEmailUpdated(email)).apply();
+    }
 
+    public void changeFunctionDescription(FunctionDescription functionDescription){
+        Objects.requireNonNull(functionDescription);
+        appendChange(new EmployeeFunctionDescriptionUpdated(functionDescription)).apply();
+    }
 
-
+    public void changeFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
+        Objects.requireNonNull(functionCharacteristic);
+        appendChange(new EmployeeFunctionCharacteristicUpdated(functionCharacteristic)).apply();
+    }
 
 }
