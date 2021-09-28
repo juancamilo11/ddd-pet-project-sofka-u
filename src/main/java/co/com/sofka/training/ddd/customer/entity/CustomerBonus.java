@@ -36,11 +36,19 @@ public class CustomerBonus extends Entity<CustomerBonusId> {
         this.dateEnd = Objects.requireNonNull(dateEnd);
     }
 
+    public void updateDiscountPercent(DiscountPercent discountPercent){
+        this.discountPercent = Objects.requireNonNull(discountPercent);
+    }
+
     public DateBegin dateBegin() {
         return this.dateBegin;
     }
 
     public DateEnd dateEnd() {
         return this.dateEnd;
+    }
+
+    public DiscountPercent discountPercent() {
+        return this.discountPercent;
     }
 }
