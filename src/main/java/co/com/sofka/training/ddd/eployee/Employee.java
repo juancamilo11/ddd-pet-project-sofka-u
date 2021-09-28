@@ -78,12 +78,12 @@ public class Employee extends AggregateEvent<EmployeeId> {
         appendChange(new EmployeeEmailUpdated(email)).apply();
     }
 
-    public void changeFunctionDescription(FunctionDescription functionDescription){
+    public void updateEmployeeFunctionDescription(FunctionDescription functionDescription){
         Objects.requireNonNull(functionDescription);
         appendChange(new EmployeeFunctionDescriptionUpdated(functionDescription)).apply();
     }
 
-    public void changeFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
+    public void updateEmployeeFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
         Objects.requireNonNull(functionCharacteristic);
         appendChange(new EmployeeFunctionCharacteristicUpdated(functionCharacteristic)).apply();
     }
