@@ -15,10 +15,12 @@ public class CustomerBonus extends Entity<CustomerBonusId> {
     private DateEnd dateEnd;
     private DiscountPercent discountPercent;
 
-    public CustomerBonus(CustomerBonusId CustomerBonusId, DateBegin dateBegin, DateEnd dateEnd) {
+    public CustomerBonus(CustomerBonusId CustomerBonusId, DateBegin dateBegin,
+                         DateEnd dateEnd, DiscountPercent discountPercent) {
         super(CustomerBonusId);
         this.dateBegin = dateBegin;
         this.dateEnd = dateEnd;
+        this.discountPercent = discountPercent;
     }
 
     public boolean isValid(){
