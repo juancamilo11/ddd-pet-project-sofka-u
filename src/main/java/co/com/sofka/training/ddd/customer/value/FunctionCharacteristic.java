@@ -12,6 +12,6 @@ public class FunctionCharacteristic implements ValueObject<String> {
 
     @Override
     public String value() {
-        return value;
+        return this.value;
     }
 }

@@ -17,4 +17,6 @@ public class CustomerFunction extends Entity<CustomerFunctionId> {
     }
 
 
+
+
 }

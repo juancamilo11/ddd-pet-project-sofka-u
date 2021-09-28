@@ -11,7 +11,7 @@ public class FunctionDescription implements ValueObject<String> {
 
     @Override
     public String value() {
-        return value;
+        return this.value;
     }
 
 }

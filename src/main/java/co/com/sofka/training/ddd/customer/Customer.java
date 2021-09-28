@@ -1,7 +1,7 @@
 package co.com.sofka.training.ddd.customer;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.training.ddd.common.*;
+import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.entity.CustomerBonus;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
 import co.com.sofka.training.ddd.customer.value.*;
