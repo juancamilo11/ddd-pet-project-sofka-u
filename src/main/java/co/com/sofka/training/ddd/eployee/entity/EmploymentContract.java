@@ -9,12 +9,12 @@ public class EmploymentContract extends Entity<EmploymentContractId> {
     private WorkingTime workingTime;
     private ContractTerm contractTerm;
 
-
     public EmploymentContract(EmploymentContractId employmentContractId, JobPosition jobPosition,
-                              WorkingTime workingTime, Salary salary) {
+                              WorkingTime workingTime, Salary salary,ContractTerm contractTerm) {
         super(employmentContractId);
         this.salary = salary;
         this.jobPosition = jobPosition;
         this.workingTime = workingTime;
+        this.contractTerm = contractTerm;
     }
 }

@@ -77,5 +77,14 @@ public class Customer extends AggregateEvent<CustomerId> {
                 .findFirst();
     }
 
+    public void changeFunctionDescription(FunctionDescription functionDescription){
+        Objects.requireNonNull(functionDescription);
+        appendChange(new CustomerFunctionDescriptionUpdated(functionDescription)).apply();
+    }
+
+    public void changeFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
+        Objects.requireNonNull(functionCharacteristic);
+        appendChange(new CustomerFunctionCharacteristicUpdated(functionCharacteristic)).apply();
+    }
 
 }
