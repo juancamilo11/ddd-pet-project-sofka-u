@@ -8,6 +8,7 @@ import co.com.sofka.training.ddd.customer.events.*;
 import co.com.sofka.training.ddd.customer.value.*;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Customer extends AggregateEvent<CustomerId> {
@@ -64,17 +65,19 @@ public class Customer extends AggregateEvent<CustomerId> {
         appendChange(new CustomerEmailUpdated(email)).apply();
     }
 
-    public void changeEmail(Email email){
-        Objects.requireNonNull(email);
-        appendChange(new CustomerEmailUpdated(email)).apply();
-    }
-
     public void changeMoneyQuantity(MoneyQuantity moneyQuantity){
         Objects.requireNonNull(moneyQuantity);
         appendChange(new CustomerMoneyQuantityUpdated(moneyQuantity)).apply();
     }
 
+    public Optional<CustomerFunction> getFunctionById(CustomerFunctionId customerFunctionId){
+        return this.employeeFunctionSet
+                .stream()
+                .filter(function -> function.identity().equals(customerFunctionId))
+                .findFirst();
+    }
 
+    
 
 
 }
