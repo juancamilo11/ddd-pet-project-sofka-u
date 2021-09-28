@@ -8,9 +8,9 @@ import co.com.sofka.training.ddd.customer.value.DateEnd;
 
 public class CustomerBonusAdded extends DomainEvent {
 
-    private DateBegin dateBegin;
-    private DateEnd dateEnd;
-    private DiscountPercent discountPercent;
+    private final DateBegin dateBegin;
+    private final DateEnd dateEnd;
+    private final DiscountPercent discountPercent;
 
     public CustomerBonusAdded(CustomerBonusId CustomerBonusId, DateBegin dateBegin, DateEnd dateEnd, DiscountPercent discountPercent) {
         super("sofka.customer.customerbonusadded");
@@ -19,6 +19,15 @@ public class CustomerBonusAdded extends DomainEvent {
         this.discountPercent = discountPercent;
     }
 
+    public DateBegin getDateBegin() {
+        return this.dateBegin;
+    }
 
+    public DateEnd getDateEnd() {
+        return this.dateEnd;
+    }
 
+    public DiscountPercent getDiscountPercent() {
+        return this.discountPercent;
+    }
 }

@@ -5,11 +5,11 @@ import co.com.sofka.training.ddd.commons.*;
 
 public class CustomerCreated extends DomainEvent {
 
-    protected final FullName fullName;
-    protected final PhoneNumber phoneNumber;
-    protected final Address address;
-    protected final Email email;
-    protected final MoneyQuantity moneyQuantity;
+    private final FullName fullName;
+    private final PhoneNumber phoneNumber;
+    private final Address address;
+    private final Email email;
+    private final MoneyQuantity moneyQuantity;
 
     public CustomerCreated(FullName fullName, PhoneNumber phoneNumber, Address address,
                            Email email, MoneyQuantity moneyQuantity) {

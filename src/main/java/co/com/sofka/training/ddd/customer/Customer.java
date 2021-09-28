@@ -4,9 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.entity.CustomerBonus;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.events.CustomerBonusAdded;
-import co.com.sofka.training.ddd.customer.events.CustomerCreated;
-import co.com.sofka.training.ddd.customer.events.CustomerFunctionAdded;
+import co.com.sofka.training.ddd.customer.events.*;
 import co.com.sofka.training.ddd.customer.value.*;
 
 import java.util.Objects;
@@ -51,7 +49,30 @@ public class Customer extends AggregateEvent<CustomerId> {
         appendChange(new CustomerFullNameUpdated(fullName)).apply();
     }
 
+    public void changePhoneNumber(PhoneNumber phoneNumber){
+        Objects.requireNonNull(phoneNumber);
+        appendChange(new CustomerPhoneNumberUpdated(phoneNumber)).apply();
+    }
 
+    public void changeAddress(Address address){
+        Objects.requireNonNull(address);
+        appendChange(new CustomerAddressUpdated(address)).apply();
+    }
+
+    public void changeEmail(Email email){
+        Objects.requireNonNull(email);
+        appendChange(new CustomerEmailUpdated(email)).apply();
+    }
+
+    public void changeEmail(Email email){
+        Objects.requireNonNull(email);
+        appendChange(new CustomerEmailUpdated(email)).apply();
+    }
+
+    public void changeMoneyQuantity(MoneyQuantity moneyQuantity){
+        Objects.requireNonNull(moneyQuantity);
+        appendChange(new CustomerMoneyQuantityUpdated(moneyQuantity)).apply();
+    }
 
 
 
