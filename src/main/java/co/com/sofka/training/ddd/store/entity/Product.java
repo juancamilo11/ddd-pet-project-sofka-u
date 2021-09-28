@@ -10,7 +10,9 @@ public class Product extends Entity<ProductId> {
 
     private ProductName productName;
     private ProductCategory productCategory;
-    private StockQuantity quantity;
+    private StockQuantity stockQuantity;
+    private ProductWeight weight;
+
 
     public Product(ProductId productId) {
         super(productId);

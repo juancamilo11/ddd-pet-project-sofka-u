@@ -45,27 +45,27 @@ public class Customer extends AggregateEvent<CustomerId> {
         appendChange(new CustomerBonusAdded(customerBonusId, dateBegin, dateEnd ,discountPercent)).apply();
     }
 
-    public void changeFullName(FullName fullName){
+    public void updateFullName(FullName fullName){
         Objects.requireNonNull(fullName);
         appendChange(new CustomerFullNameUpdated(fullName)).apply();
     }
 
-    public void changePhoneNumber(PhoneNumber phoneNumber){
+    public void updatePhoneNumber(PhoneNumber phoneNumber){
         Objects.requireNonNull(phoneNumber);
         appendChange(new CustomerPhoneNumberUpdated(phoneNumber)).apply();
     }
 
-    public void changeAddress(Address address){
+    public void updateAddress(Address address){
         Objects.requireNonNull(address);
         appendChange(new CustomerAddressUpdated(address)).apply();
     }
 
-    public void changeEmail(Email email){
+    public void updateEmail(Email email){
         Objects.requireNonNull(email);
         appendChange(new CustomerEmailUpdated(email)).apply();
     }
 
-    public void changeMoneyQuantity(MoneyQuantity moneyQuantity){
+    public void updateMoneyQuantity(MoneyQuantity moneyQuantity){
         Objects.requireNonNull(moneyQuantity);
         appendChange(new CustomerMoneyQuantityUpdated(moneyQuantity)).apply();
     }
@@ -77,14 +77,31 @@ public class Customer extends AggregateEvent<CustomerId> {
                 .findFirst();
     }
 
-    public void changeFunctionDescription(FunctionDescription functionDescription){
+    public void updateFunctionDescription(FunctionDescription functionDescription){
         Objects.requireNonNull(functionDescription);
         appendChange(new CustomerFunctionDescriptionUpdated(functionDescription)).apply();
     }
 
-    public void changeFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
+    public void updateFunctionCharacteristic(FunctionCharacteristic functionCharacteristic){
         Objects.requireNonNull(functionCharacteristic);
         appendChange(new CustomerFunctionCharacteristicUpdated(functionCharacteristic)).apply();
     }
+
+    public void updateBonusDateBegin(DateBegin dateBegin){
+        Objects.requireNonNull(dateBegin);
+        appendChange(new CustomerBonusDateBeginUpdated(dateBegin)).apply();
+    }
+
+    public void updateBonusDateEnd(DateEnd dateEnd){
+        Objects.requireNonNull(dateEnd);
+        appendChange(new CustomerBonusDateEndUpdated(dateEnd)).apply();
+    }
+
+    public void updateBonusPercentDiscount(DiscountPercent discountPercent){
+        Objects.requireNonNull(discountPercent);
+        appendChange(new CustomerBonusDiscountPercentUpdated(discountPercent)).apply();
+    }
+
+
 
 }
