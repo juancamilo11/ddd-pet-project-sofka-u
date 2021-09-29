@@ -70,7 +70,7 @@ public class Product extends Entity<ProductId> {
     }
 
     public Iva iva() {
-        return iva;
+        return this.iva;
     }
 
     public void updateIva(Iva iva) {

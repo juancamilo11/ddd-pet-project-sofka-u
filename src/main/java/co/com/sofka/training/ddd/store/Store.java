@@ -3,21 +3,17 @@ package co.com.sofka.training.ddd.store;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.events.*;
 import co.com.sofka.training.ddd.customer.value.CustomerFunctionId;
-import co.com.sofka.training.ddd.customer.value.DateBegin;
-import co.com.sofka.training.ddd.customer.value.DateEnd;
 import co.com.sofka.training.ddd.eployee.Employee;
+import co.com.sofka.training.ddd.eployee.value.EmployeeId;
 import co.com.sofka.training.ddd.sale.values.SaleId;
 import co.com.sofka.training.ddd.store.entity.Product;
 import co.com.sofka.training.ddd.store.events.*;
+import co.com.sofka.training.ddd.store.values.ProductId;
 import co.com.sofka.training.ddd.store.values.StoreId;
 import co.com.sofka.training.ddd.store.values.StoreName;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Store extends AggregateEvent<StoreId> {
 
@@ -29,18 +25,48 @@ public class Store extends AggregateEvent<StoreId> {
     private MoneyQuantity moneyQuantity;
 
     private List<Product> productList;
-    private Set<Employee> employeeSet;
+    private Set<EmployeeId> employeeIdSet;
 
     public Store(StoreId storeId, SaleId saleId, Address address, Email email, PhoneNumber phoneNumber,
-                 MoneyQuantity moneyQuantity, List<Product> productList, Set<Employee> employeeSet) {
+                 MoneyQuantity moneyQuantity) {
         super(storeId);
         this.saleId = saleId;
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.moneyQuantity = moneyQuantity;
-        this.productList = productList;
-        this.employeeSet = employeeSet;
+    }
+
+    public void addProduct(Product product){
+        if(this.productList == null){
+            this.productList = new ArrayList<>();
+        }
+        this.productList.add(product);
+    }
+
+    public void addEmployee(EmployeeId employeeId){
+        if(this.employeeIdSet == null){
+            this.employeeIdSet = new HashSet<>();
+        }
+        this.employeeIdSet.add(employeeId);
+    }
+
+    public Optional<Product> removeProduct(Product prod){
+        return this.productList.stream().filter(product -> product.identity().equals(prod)).findFirst();
+    }
+
+    public Optional<EmployeeId> removeEmployee(EmployeeId emplId){
+        return this.employeeIdSet
+                .stream()
+                .filter(employeeId -> employeeId.value().equals(emplId.value()))
+                .findFirst();
+    }
+
+    public Optional<Product> getProductById(ProductId productId){
+        return this.productList
+                .stream()
+                .filter(function -> function.identity().equals(productId))
+                .findFirst();
     }
 
     public void updateStoreName(StoreName storeName){
