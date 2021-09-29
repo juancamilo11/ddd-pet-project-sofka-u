@@ -17,4 +17,36 @@ public class EmploymentContract extends Entity<EmploymentContractId> {
         this.workingTime = workingTime;
         this.contractTerm = contractTerm;
     }
+
+    public Salary salary() {
+        return this.salary;
+    }
+
+    public void updateSalary(Salary salary) {
+        this.salary = salary;
+    }
+
+    public JobPosition jobPosition() {
+        return this.jobPosition;
+    }
+
+    public void updateJobPosition(JobPosition jobPosition) {
+        this.jobPosition = jobPosition;
+    }
+
+    public WorkingTime workingTime() {
+        return workingTime;
+    }
+
+    public void updateWorkingTime(WorkingTime workingTime) {
+        this.workingTime = workingTime;
+    }
+
+    public ContractTerm contractTerm() {
+        return contractTerm;
+    }
+
+    public void updateContractTerm(ContractTerm contractTerm) {
+        this.contractTerm = contractTerm;
+    }
 }

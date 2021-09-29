@@ -5,12 +5,12 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class PurchaseInfo implements ValueObject<String> {
+public class SaleInfo implements ValueObject<String> {
 
     private String location;
     private LocalDate purchaseDate;
 
-    public PurchaseInfo(String location, LocalDate purchaseDate) {
+    public SaleInfo(String location, LocalDate purchaseDate) {
         this.location = Objects.requireNonNull(location);
         this.purchaseDate = Objects.requireNonNull(purchaseDate);
     }

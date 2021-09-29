@@ -13,14 +13,13 @@ import java.util.Set;
 
 public class Customer extends AggregateEvent<CustomerId> {
 
-    protected FullName fullName;
-    protected PhoneNumber phoneNumber;
-    protected Address address;
-    protected Email email;
-    protected MoneyQuantity moneyQuantity;
-
-    protected CustomerBonus customerBonus;
-    protected Set<CustomerFunction> customerFunctionSet;
+    private FullName fullName;
+    private PhoneNumber phoneNumber;
+    private Address address;
+    private Email email;
+    private MoneyQuantity moneyQuantity;
+    private CustomerBonus customerBonus;
+    private Set<CustomerFunction> customerFunctionSet;
 
     public Customer(CustomerId customerId, FullName fullName, PhoneNumber phoneNumber,
                     Address address, Email email, MoneyQuantity moneyQuantity) {

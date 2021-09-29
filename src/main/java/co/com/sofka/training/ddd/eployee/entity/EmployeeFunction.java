@@ -14,6 +14,19 @@ public class EmployeeFunction extends Entity<EmployeeFunctionId> {
         super(EmployeeFunctionId);
     }
 
+    public FunctionDescription functionDescription() {
+        return this.functionDescription;
+    }
 
+    public void updateFunctionDescription(FunctionDescription functionDescription) {
+        this.functionDescription = functionDescription;
+    }
 
+    public FunctionCharacteristic functionCharacteristic() {
+        return this.functionCharacteristic;
+    }
+
+    public void updateFunctionCharacteristic(FunctionCharacteristic functionCharacteristic) {
+        this.functionCharacteristic = functionCharacteristic;
+    }
 }
