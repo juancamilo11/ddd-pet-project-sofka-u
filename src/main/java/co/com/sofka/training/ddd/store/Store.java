@@ -2,9 +2,6 @@ package co.com.sofka.training.ddd.store;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.commons.*;
-import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.value.CustomerFunctionId;
-import co.com.sofka.training.ddd.eployee.Employee;
 import co.com.sofka.training.ddd.eployee.value.EmployeeId;
 import co.com.sofka.training.ddd.sale.values.SaleId;
 import co.com.sofka.training.ddd.store.entity.Product;

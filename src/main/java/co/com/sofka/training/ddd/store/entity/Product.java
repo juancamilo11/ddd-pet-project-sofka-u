@@ -1,13 +1,9 @@
 package co.com.sofka.training.ddd.store.entity;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.training.ddd.commons.DiscountPercent;
 import co.com.sofka.training.ddd.commons.Iva;
-import co.com.sofka.training.ddd.customer.value.DateBegin;
-import co.com.sofka.training.ddd.customer.value.DateEnd;
 import co.com.sofka.training.ddd.store.values.*;
 
-import java.util.Objects;
 
 public class Product extends Entity<ProductId> {
 
