@@ -1,19 +1,25 @@
 package co.com.sofka.training.ddd.sale.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.training.ddd.commons.SaleInfo;
 import co.com.sofka.training.ddd.customer.value.CustomerId;
+import co.com.sofka.training.ddd.sale.values.SaleId;
 
-public class SaleCreated extends DomainEvent {
+public class SaleCreated<saleId> extends DomainEvent {
+    private SaleInfo saleInfo;
+    private SaleId saleId;
 
-    private CustomerId customerId;
-
-    public SaleCreated(CustomerId customerId){
+    public SaleCreated(SaleId saleId, SaleInfo saleInfo){
         super("sofka.sale.salecreated");
-        this.customerId = customerId;
+        this.saleInfo = saleInfo;
+        this.saleId = saleId;
     }
 
-    public CustomerId getFullName() {
-        return this.customerId;
+    public SaleId getSaleId() {
+        return this.saleId;
     }
 
+    public SaleInfo getSaleInfo() {
+        return this.saleInfo;
+    }
 }

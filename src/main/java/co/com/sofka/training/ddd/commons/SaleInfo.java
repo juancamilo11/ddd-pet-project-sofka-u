@@ -8,15 +8,15 @@ import java.util.Objects;
 public class SaleInfo implements ValueObject<String> {
 
     private String location;
-    private LocalDate purchaseDate;
+    private LocalDate saleDate;
 
     public SaleInfo(String location, LocalDate purchaseDate) {
         this.location = Objects.requireNonNull(location);
-        this.purchaseDate = Objects.requireNonNull(purchaseDate);
+        this.saleDate = Objects.requireNonNull(purchaseDate);
     }
 
     @Override
     public String value() {
-        return "Purchase: Location: " + this.location + ", at: " + purchaseDate;
+        return "Purchase: Location: " + this.location + ", at: " + saleDate;
     }
 }

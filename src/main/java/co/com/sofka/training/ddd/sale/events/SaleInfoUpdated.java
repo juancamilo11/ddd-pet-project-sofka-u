@@ -12,7 +12,7 @@ public class SaleInfoUpdated extends DomainEvent {
         this.saleInfo = saleInfo;
     }
 
-    public SaleInfo getPurchaseInfo() {
+    public SaleInfo getSaleInfo() {
         return this.saleInfo;
     }
 }

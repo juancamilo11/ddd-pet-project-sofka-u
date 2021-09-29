@@ -3,6 +3,7 @@ package co.com.sofka.training.ddd.sale;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.value.*;
+import co.com.sofka.training.ddd.eployee.value.BillId;
 import co.com.sofka.training.ddd.sale.entity.Bill;
 import co.com.sofka.training.ddd.sale.events.*;
 import co.com.sofka.training.ddd.sale.values.SaleId;
@@ -14,32 +15,27 @@ import java.util.Objects;
 
 public class Sale extends AggregateEvent<SaleId> {
 
-    private CustomerId customerId;
-    private List<ProductId> productIdList;
-    private Bill bill;
+    protected List<ProductId> productIdList;
+    protected SaleInfo saleInfo;
+    protected Bill bill;
 
-    public Sale(SaleId saleId) {
+    public Sale(SaleId saleId, BillId billId, CustomerId customerId,
+                SaleInfo saleInfo, TotalAmount totalAmount,
+                TotalDiscount totalDiscount, Iva iva) {
         super(saleId);
-        appendChange(new SaleCreated(customerId)).apply();
+        productIdList = new ArrayList<>();
+        this.bill = new Bill(billId,customerId, saleInfo, totalAmount, totalDiscount, iva);
+        appendChange(new SaleCreated(saleId, saleInfo)).apply();
     }
 
     public void addProduct(ProductId productId){
         Objects.requireNonNull(productId);
-        if(this.productIdList == null) {
-            this.productIdList = new ArrayList<>();
-        }
-        this.productIdList.add(productId);
+        appendChange(new productAdded(productId)).apply();
     }
 
-    public void deleteProduct(ProductId id){
-        this.productIdList
-                .stream()
-                .filter(productId -> productId.equals(id));
-    }
-
-    public void updateParchaseInfo(SaleInfo purchaseInfo){
-        Objects.requireNonNull(purchaseInfo);
-        appendChange(new SaleInfoUpdated(purchaseInfo)).apply();
+    public void updateSaleInfo(SaleInfo saleInfo){
+        Objects.requireNonNull(saleInfo);
+        appendChange(new SaleInfoUpdated(saleInfo)).apply();
     }
 
     public void updateTotalAmount(TotalAmount totalAmount){

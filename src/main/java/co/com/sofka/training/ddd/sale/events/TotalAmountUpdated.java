@@ -1,7 +1,6 @@
 package co.com.sofka.training.ddd.sale.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.training.ddd.commons.SaleInfo;
 import co.com.sofka.training.ddd.commons.TotalAmount;
 
 public class TotalAmountUpdated extends DomainEvent {

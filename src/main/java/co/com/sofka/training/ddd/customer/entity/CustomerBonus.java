@@ -15,9 +15,9 @@ public class CustomerBonus extends Entity<CustomerBonusId> {
     private DateEnd dateEnd;
     private DiscountPercent discountPercent;
 
-    public CustomerBonus(CustomerBonusId CustomerBonusId, DateBegin dateBegin,
+    public CustomerBonus(CustomerBonusId customerBonusId, DateBegin dateBegin,
                          DateEnd dateEnd, DiscountPercent discountPercent) {
-        super(CustomerBonusId);
+        super(customerBonusId);
         this.dateBegin = dateBegin;
         this.dateEnd = dateEnd;
         this.discountPercent = discountPercent;
