@@ -1,9 +1,13 @@
 package co.com.sofka.training.ddd.sale;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.value.*;
+import co.com.sofka.training.ddd.eployee.Employee;
+import co.com.sofka.training.ddd.eployee.EmployeeChange;
 import co.com.sofka.training.ddd.eployee.value.BillId;
+import co.com.sofka.training.ddd.eployee.value.EmployeeId;
 import co.com.sofka.training.ddd.sale.entity.Bill;
 import co.com.sofka.training.ddd.sale.events.*;
 import co.com.sofka.training.ddd.sale.values.SaleId;
@@ -26,6 +30,17 @@ public class Sale extends AggregateEvent<SaleId> {
         productIdList = new ArrayList<>();
         this.bill = new Bill(billId,customerId, saleInfo, totalAmount, totalDiscount, iva);
         appendChange(new SaleCreated(saleId, saleInfo)).apply();
+    }
+
+    public Sale(SaleId saleId){
+        super(saleId);
+        subscribe(new SaleChange(this));
+    }
+
+    public static Sale from(SaleId saleId, List<DomainEvent> eventList){
+        var sale = new Sale(saleId);
+        eventList.forEach(sale::applyEvent);
+        return sale;
     }
 
     public void addProduct(ProductId productId){

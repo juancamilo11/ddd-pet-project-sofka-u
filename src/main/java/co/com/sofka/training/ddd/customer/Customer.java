@@ -1,12 +1,14 @@
 package co.com.sofka.training.ddd.customer;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.entity.CustomerBonus;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
 import co.com.sofka.training.ddd.customer.events.*;
 import co.com.sofka.training.ddd.customer.value.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -33,6 +35,12 @@ public class Customer extends AggregateEvent<CustomerId> {
     private Customer(CustomerId customerId){
         super(customerId);
         subscribe(new CustomerChange(this));
+    }
+
+    public static Customer from(CustomerId customerId, List<DomainEvent> eventList){
+        var customer = new Customer(customerId);
+        eventList.forEach(customer::applyEvent);
+        return customer;
     }
 
     public void addCustomerFunction(CustomerFunctionId customerFunctionId, FunctionDescription functionDescription,

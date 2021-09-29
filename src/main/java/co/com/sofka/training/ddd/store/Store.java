@@ -1,55 +1,64 @@
 package co.com.sofka.training.ddd.store;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.eployee.value.EmployeeId;
+import co.com.sofka.training.ddd.sale.Sale;
 import co.com.sofka.training.ddd.sale.values.SaleId;
 import co.com.sofka.training.ddd.store.entity.Product;
 import co.com.sofka.training.ddd.store.events.*;
-import co.com.sofka.training.ddd.store.values.ProductId;
-import co.com.sofka.training.ddd.store.values.StoreId;
-import co.com.sofka.training.ddd.store.values.StoreName;
+import co.com.sofka.training.ddd.store.values.*;
 
 import java.util.*;
 
 public class Store extends AggregateEvent<StoreId> {
 
-    private SaleId saleId;
-    private StoreName storeName;
-    private Address address;
-    private Email email;
-    private PhoneNumber phoneNumber;
-    private MoneyQuantity moneyQuantity;
+    protected StoreName storeName;
+    protected Address address;
+    protected Email email;
+    protected PhoneNumber phoneNumber;
+    protected MoneyQuantity moneyQuantity;
 
-    private List<Product> productList;
-    private Set<EmployeeId> employeeIdSet;
+    protected List<Product> productList;
+    protected Set<EmployeeId> employeeIdSet;
 
-    public Store(StoreId storeId, SaleId saleId, Address address, Email email, PhoneNumber phoneNumber,
+    public Store(StoreName storeName, StoreId storeId, Address address, Email email, PhoneNumber phoneNumber,
                  MoneyQuantity moneyQuantity) {
         super(storeId);
-        this.saleId = saleId;
-        this.address = address;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.moneyQuantity = moneyQuantity;
+        appendChange(new StoreCreated(storeName, phoneNumber, address, email, moneyQuantity));
     }
 
-    public void addProduct(Product product){
-        if(this.productList == null){
-            this.productList = new ArrayList<>();
-        }
-        this.productList.add(product);
+    public Store(StoreId storeId){
+        super(storeId);
+        subscribe(new StoreChange(this));
+    }
+
+    public static Store from(StoreId storeId, List<DomainEvent> eventList){
+        var store = new Store(storeId);
+        eventList.forEach(store::applyEvent);
+        return store;
     }
 
     public void addEmployee(EmployeeId employeeId){
-        if(this.employeeIdSet == null){
-            this.employeeIdSet = new HashSet<>();
-        }
-        this.employeeIdSet.add(employeeId);
+        Objects.requireNonNull(employeeId);
+        appendChange(new EmployeeAdded(employeeId));
     }
 
-    public Optional<Product> removeProduct(Product prod){
-        return this.productList.stream().filter(product -> product.identity().equals(prod)).findFirst();
+    public void addProduct(ProductName productName, ProductCategory productCategory,
+                           StockQuantity stockQuantity, ProductWeight weight,
+                           ExpirationDate expirationDate, Iva iva){
+        Objects.requireNonNull(productName);
+        Objects.requireNonNull(productCategory);
+        Objects.requireNonNull(stockQuantity);
+        Objects.requireNonNull(weight);
+        Objects.requireNonNull(expirationDate);
+        Objects.requireNonNull(iva);
+        appendChange(new ProductAdded(productName, productCategory, stockQuantity, weight,expirationDate,iva));
+    }
+
+    public Optional<Product> removeProduct(ProductId productId){
+        return this.productList.stream().filter(product -> product.identity().equals(productId)).findFirst();
     }
 
     public Optional<EmployeeId> removeEmployee(EmployeeId emplId){

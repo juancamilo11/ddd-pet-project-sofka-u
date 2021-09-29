@@ -1,12 +1,16 @@
 package co.com.sofka.training.ddd.eployee;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
+import co.com.sofka.training.ddd.customer.Customer;
+import co.com.sofka.training.ddd.customer.value.CustomerId;
 import co.com.sofka.training.ddd.eployee.entity.EmployeeFunction;
 import co.com.sofka.training.ddd.eployee.entity.EmploymentContract;
 import co.com.sofka.training.ddd.eployee.events.*;
 import co.com.sofka.training.ddd.eployee.value.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -36,6 +40,12 @@ public class Employee extends AggregateEvent<EmployeeId> {
     public Employee(EmployeeId employeeId){
         super(employeeId);
         subscribe(new EmployeeChange(this));
+    }
+
+    public static Employee from(EmployeeId employeeId, List<DomainEvent> eventList){
+        var employee = new Employee(employeeId);
+        eventList.forEach(employee::applyEvent);
+        return employee;
     }
 
     public void addEmployeeFunction(EmployeeFunctionId employeeFunctionId, FunctionDescription functionDescription,
