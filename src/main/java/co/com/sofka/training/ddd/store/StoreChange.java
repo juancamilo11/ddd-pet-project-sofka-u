@@ -1,7 +1,9 @@
 package co.com.sofka.training.ddd.store;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.training.ddd.store.events.*;
+import co.com.sofka.training.ddd.store.event.*;
+
+import java.util.stream.Collectors;
 
 public class StoreChange extends EventChange {
 
@@ -25,7 +27,23 @@ public class StoreChange extends EventChange {
 
         apply((StoreMoneyQuantityUpdated event) -> store.moneyQuantity = event.getMoneyQuantity());
 
+        apply((EmployeeRemoved event) -> {
+            store.productList = store
+                    .productList
+                    .stream()
+                    .filter(product -> product.identity().equals(event.getEmployeeId()))
+                    .collect(Collectors.toList());
+        });
 
+        apply((ProductRemoved event) -> {
+            if(store.getProductById(event.getProductId()).isPresent()) {
+                store.employeeIdSet = store
+                        .employeeIdSet
+                        .stream()
+                        .filter(employeeId -> employeeId.equals(event.getProductId().value()))
+                        .collect(Collectors.toSet());
+            }
+        });
 
     }
 }

@@ -4,10 +4,8 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.eployee.value.EmployeeId;
-import co.com.sofka.training.ddd.sale.Sale;
-import co.com.sofka.training.ddd.sale.values.SaleId;
 import co.com.sofka.training.ddd.store.entity.Product;
-import co.com.sofka.training.ddd.store.events.*;
+import co.com.sofka.training.ddd.store.event.*;
 import co.com.sofka.training.ddd.store.values.*;
 
 import java.util.*;
@@ -57,18 +55,18 @@ public class Store extends AggregateEvent<StoreId> {
         appendChange(new ProductAdded(productName, productCategory, stockQuantity, weight,expirationDate,iva));
     }
 
-    public Optional<Product> removeProduct(ProductId productId){
-        return this.productList.stream().filter(product -> product.identity().equals(productId)).findFirst();
+    public void removeProduct(ProductId productId){
+        Objects.requireNonNull(productId);
+        appendChange(new ProductRemoved(productId));
     }
 
-    public Optional<EmployeeId> removeEmployee(EmployeeId emplId){
-        return this.employeeIdSet
-                .stream()
-                .filter(employeeId -> employeeId.value().equals(emplId.value()))
-                .findFirst();
+    public void removeEmployee(EmployeeId employeeId){
+        Objects.requireNonNull(employeeId);
+        appendChange(new EmployeeRemoved(employeeId));
     }
 
     public Optional<Product> getProductById(ProductId productId){
+        Objects.requireNonNull(productId);
         return this.productList
                 .stream()
                 .filter(function -> function.identity().equals(productId))

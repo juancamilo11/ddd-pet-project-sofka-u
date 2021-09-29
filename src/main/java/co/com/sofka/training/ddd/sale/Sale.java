@@ -4,12 +4,9 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
 import co.com.sofka.training.ddd.customer.value.*;
-import co.com.sofka.training.ddd.eployee.Employee;
-import co.com.sofka.training.ddd.eployee.EmployeeChange;
 import co.com.sofka.training.ddd.eployee.value.BillId;
-import co.com.sofka.training.ddd.eployee.value.EmployeeId;
 import co.com.sofka.training.ddd.sale.entity.Bill;
-import co.com.sofka.training.ddd.sale.events.*;
+import co.com.sofka.training.ddd.sale.event.*;
 import co.com.sofka.training.ddd.sale.values.SaleId;
 import co.com.sofka.training.ddd.store.values.ProductId;
 

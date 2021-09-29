@@ -1,10 +1,7 @@
 package co.com.sofka.training.ddd.sale;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.training.ddd.customer.Customer;
-import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.events.*;
-import co.com.sofka.training.ddd.sale.events.*;
+import co.com.sofka.training.ddd.sale.event.*;
 
 public class SaleChange extends EventChange {
     public SaleChange(Sale sale){

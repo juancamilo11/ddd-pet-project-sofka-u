@@ -3,11 +3,9 @@ package co.com.sofka.training.ddd.eployee;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.training.ddd.commons.*;
-import co.com.sofka.training.ddd.customer.Customer;
-import co.com.sofka.training.ddd.customer.value.CustomerId;
 import co.com.sofka.training.ddd.eployee.entity.EmployeeFunction;
 import co.com.sofka.training.ddd.eployee.entity.EmploymentContract;
-import co.com.sofka.training.ddd.eployee.events.*;
+import co.com.sofka.training.ddd.eployee.event.*;
 import co.com.sofka.training.ddd.eployee.value.*;
 
 import java.util.List;

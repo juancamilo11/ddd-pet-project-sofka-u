@@ -1,10 +1,8 @@
 package co.com.sofka.training.ddd.eployee;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.events.*;
 import co.com.sofka.training.ddd.eployee.entity.EmployeeFunction;
-import co.com.sofka.training.ddd.eployee.events.*;
+import co.com.sofka.training.ddd.eployee.event.*;
 
 public class EmployeeChange extends EventChange {
 

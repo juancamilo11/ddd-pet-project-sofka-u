@@ -2,7 +2,7 @@ package co.com.sofka.training.ddd.customer;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
-import co.com.sofka.training.ddd.customer.events.*;
+import co.com.sofka.training.ddd.customer.event.*;
 
 public class CustomerChange extends EventChange {
     public CustomerChange(Customer customer){
