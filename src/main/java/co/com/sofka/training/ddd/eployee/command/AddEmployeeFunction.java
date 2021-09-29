@@ -1,28 +1,28 @@
-package co.com.sofka.training.ddd.customer.command;
+package co.com.sofka.training.ddd.eployee.command;
 
 import co.com.sofka.domain.generic.Command;
 import co.com.sofka.training.ddd.commons.FunctionCharacteristic;
 import co.com.sofka.training.ddd.commons.FunctionDescription;
-import co.com.sofka.training.ddd.customer.value.CustomerFunctionId;
+import co.com.sofka.training.ddd.eployee.value.EmployeeFunctionId;
 
-public class AddCustomerFunction implements Command {
+public class AddEmployeeFunction implements Command {
 
-    private CustomerFunctionId customerFunctionId;
+    private EmployeeFunctionId employeeFunctionId;
     private FunctionDescription functionDescription;
     private FunctionCharacteristic functionCharacteristic;
 
-    public AddCustomerFunction(CustomerFunctionId customerFunctionId, FunctionDescription functionDescription, FunctionCharacteristic functionCharacteristic) {
-        this.customerFunctionId = customerFunctionId;
-        this.functionDescription = functionDescription;
+
+    public AddEmployeeFunction(EmployeeFunctionId employeeFunctionId, FunctionCharacteristic functionCharacteristic) {
+        this.employeeFunctionId = employeeFunctionId;
         this.functionCharacteristic = functionCharacteristic;
     }
 
-    public CustomerFunctionId getCustomerFunctionId() {
-        return customerFunctionId;
+    public EmployeeFunctionId getEmployeeFunctionId() {
+        return employeeFunctionId;
     }
 
-    public void setCustomerFunctionId(CustomerFunctionId customerFunctionId) {
-        this.customerFunctionId = customerFunctionId;
+    public void setEmployeeFunctionId(EmployeeFunctionId employeeFunctionId) {
+        this.employeeFunctionId = employeeFunctionId;
     }
 
     public FunctionDescription getFunctionDescription() {

@@ -1,4 +1,4 @@
-package co.com.sofka.training.ddd.customer.command;
+package co.com.sofka.training.ddd.eployee.command;
 
 import co.com.sofka.domain.generic.Command;
 import co.com.sofka.training.ddd.commons.Address;

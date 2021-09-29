@@ -70,22 +70,22 @@ public class Employee extends AggregateEvent<EmployeeId> {
                 .findFirst();
     }
 
-    public void changeFullName(FullName fullName){
+    public void updateFullName(FullName fullName){
         Objects.requireNonNull(fullName);
         appendChange(new EmployeeFullNameUpdated(fullName)).apply();
     }
 
-    public void changePhoneNumber(PhoneNumber phoneNumber){
+    public void updatePhoneNumber(PhoneNumber phoneNumber){
         Objects.requireNonNull(phoneNumber);
         appendChange(new EmployeePhoneNumberUpdated(phoneNumber)).apply();
     }
 
-    public void changeAddress(Address address){
+    public void updateAddress(Address address){
         Objects.requireNonNull(address);
         appendChange(new EmployeeAddressUpdated(address)).apply();
     }
 
-    public void changeEmail(Email email){
+    public void updateEmail(Email email){
         Objects.requireNonNull(email);
         appendChange(new EmployeeEmailUpdated(email)).apply();
     }

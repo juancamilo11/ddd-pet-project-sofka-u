@@ -1,10 +1,9 @@
-package co.com.sofka.training.ddd.customer.command;
+package co.com.sofka.training.ddd.eployee.command;
 
 import co.com.sofka.domain.generic.Command;
 import co.com.sofka.training.ddd.commons.FullName;
 
 public class UpdateFullName implements Command {
-
     private FullName fullName;
 
     public UpdateFullName(FullName fullName) {

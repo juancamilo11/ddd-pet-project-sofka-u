@@ -85,7 +85,7 @@ public class Customer extends AggregateEvent<CustomerId> {
         appendChange(new CustomerMoneyQuantityUpdated(moneyQuantity)).apply();
     }
 
-    public Optional<CustomerFunction> getCustomerFunctionById(CustomerFunctionId customerFunctionId){
+    protected Optional<CustomerFunction> getCustomerFunctionById(CustomerFunctionId customerFunctionId){
         return this.customerFunctionSet
                 .stream()
                 .filter(function -> function.identity().equals(customerFunctionId))
