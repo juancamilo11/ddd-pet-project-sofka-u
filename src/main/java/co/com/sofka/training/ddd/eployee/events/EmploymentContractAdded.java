@@ -1,25 +1,27 @@
 package co.com.sofka.training.ddd.eployee.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.training.ddd.commons.DiscountPercent;
-import co.com.sofka.training.ddd.customer.value.CustomerBonusId;
-import co.com.sofka.training.ddd.customer.value.DateBegin;
-import co.com.sofka.training.ddd.customer.value.DateEnd;
 import co.com.sofka.training.ddd.eployee.value.*;
 
 public class EmploymentContractAdded extends DomainEvent {
 
-    private Salary salary;
-    private JobPosition jobPosition;
-    private WorkingTime workingTime;
-    private ContractTerm contractTerm;
+    private final EmploymentContractId employmentContractId;
+    private final Salary salary;
+    private final JobPosition jobPosition;
+    private final WorkingTime workingTime;
+    private final ContractTerm contractTerm;
 
-    public EmploymentContractAdded(EmploymentContractId employmentContractId, Salary salary, JobPosition jobPosition, WorkingTime workingTime, ContractTerm contractTerm) {
+    public EmploymentContractAdded(EmploymentContractId employmentContractId, JobPosition jobPosition, WorkingTime workingTime, Salary salary, ContractTerm contractTerm) {
         super("sofka.employee.employmentcontractadded");
+        this.employmentContractId = employmentContractId;
         this.salary = salary;
         this.jobPosition = jobPosition;
         this.workingTime = workingTime;
         this.contractTerm = contractTerm;
+    }
+
+    public EmploymentContractId getEmploymentContractId() {
+        return this.employmentContractId;
     }
 
     public Salary getSalary() {

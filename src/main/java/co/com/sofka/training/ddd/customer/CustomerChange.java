@@ -4,8 +4,6 @@ import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.training.ddd.customer.entity.CustomerFunction;
 import co.com.sofka.training.ddd.customer.events.*;
 
-import java.util.Optional;
-
 public class CustomerChange extends EventChange {
     public CustomerChange(Customer customer){
         apply((CustomerCreated event) -> {
