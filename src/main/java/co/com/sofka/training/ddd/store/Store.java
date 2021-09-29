@@ -97,6 +97,4 @@ public class Store extends AggregateEvent<StoreId> {
         Objects.requireNonNull(moneyQuantity);
         appendChange(new StoreMoneyQuantityUpdated(moneyQuantity)).apply();
     }
-
-
 }
