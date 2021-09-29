@@ -45,5 +45,12 @@ public class EmployeeChange extends EventChange {
                 event.getWorkingTime(),
                 event.getContractTerm()));
 
+        apply((EmployeeJobPositionUpdated event) -> employee.employmentContract.updateJobPosition(event.getJobPosition()));
+
+        apply((EmployeeWorkingTimeUpdated event) -> employee.employmentContract.updateWorkingTime(event.getWorkingTime()));
+
+        apply((EmployeeSalaryUpdated event) -> employee.employmentContract.updateSalary(event.getSalary()));
+
+        apply((EmployeeContractTermUpdated event) -> employee.employmentContract.updateContractTerm(event.getContractTerm()));
     }
 }

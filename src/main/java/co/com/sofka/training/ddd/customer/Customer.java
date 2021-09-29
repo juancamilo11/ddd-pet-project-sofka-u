@@ -22,8 +22,11 @@ public class Customer extends AggregateEvent<CustomerId> {
     protected Set<CustomerFunction> customerFunctionSet;
 
     public Customer(CustomerId customerId, FullName fullName, PhoneNumber phoneNumber,
-                    Address address, Email email, MoneyQuantity moneyQuantity) {
+                    Address address, Email email, MoneyQuantity moneyQuantity,
+                    CustomerBonusId customerBonusId,DateBegin dateBegin,
+                    DateEnd dateEnd, DiscountPercent discountPercent) {
         super(customerId);
+        this.customerBonus = new CustomerBonus(customerBonusId, dateBegin, dateEnd, discountPercent);
         appendChange(new CustomerCreated(fullName, phoneNumber, address, email, moneyQuantity)).apply();
     }
 

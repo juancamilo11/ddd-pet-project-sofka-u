@@ -113,5 +113,4 @@ public class Employee extends AggregateEvent<EmployeeId> {
         Objects.requireNonNull(contractTerm);
         appendChange(new EmployeeContractTermUpdated(contractTerm)).apply();
     }
-
 }
